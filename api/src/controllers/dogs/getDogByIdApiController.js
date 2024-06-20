@@ -1,8 +1,7 @@
 const axios = require('axios');
-const { API_KEY } = process.env;
+// const { API_KEY } = process.env;
 
-const getDogsApiController = async () => {
-    console.log(process.env.API_KEY);
+const getDogByApiController = async (id) => {
     const infoApi = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${process.env.API_KEY}`)).data;
     const infoApiFilter = await infoApi.map((dog) => {
         return {
@@ -14,8 +13,13 @@ const getDogsApiController = async () => {
             life_span: dog.life_span
         }
     });
-    return infoApiFilter;
+
+    const dogByID = infoApiFilter.find((dog) => {
+        return dog.id = id;
+    })
+
+    return dogByID;
 }
 
 
-module.exports = getDogsApiController;
+module.exports = getDogByApiController;

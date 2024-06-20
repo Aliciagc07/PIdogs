@@ -1,6 +1,6 @@
 const { Dog, Temperament } = require('../../db');
 
-const getDogsDBController = async () => {
+const getDogsByNameControllerDB = async () => {
     const allDogsBD = await Dog.findAll(
         {
             include: [
@@ -16,4 +16,4 @@ const getDogsDBController = async () => {
 }
 
 
-module.exports = getDogsDBController;
+module.exports = getDogsByNameControllerDB;

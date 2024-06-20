@@ -3,7 +3,7 @@ const dogsRouter = Router();
 
 // import hadlers
 const getDogsHandler = require('../handlers/dogs/getDogsHandler');
-const getDogsByIdHandler = require('../handlers/dogs/getDogsByIdHandler');
+const getDogByIdHandler = require('../handlers/dogs/getDogByIdHandler');
 const postDogsHandler = require('../handlers/dogs/postDogsHandler');
 
 
@@ -11,7 +11,7 @@ const postDogsHandler = require('../handlers/dogs/postDogsHandler');
 //Obtener los perritos
 dogsRouter.get("/", getDogsHandler);
 //Obtener el perrito por ID
-dogsRouter.get("/:id", getDogsByIdHandler);
+dogsRouter.get("/:id", getDogByIdHandler);
 //Crear un perrito
 dogsRouter.post("/", postDogsHandler);
 
