@@ -2,8 +2,7 @@ const axios = require('axios');
 // const { API_KEY } = process.env;
 
 const getDogsByNameControllerAPI = async (name) => {
-    console.log(name);
-    const infoApi = (await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)).data;
+    const infoApi = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${process.env.API_KEY}`)).data;
     const infoApiFilter = await infoApi.map((dog) => {
         return {
             id: dog.id,
@@ -11,10 +10,18 @@ const getDogsByNameControllerAPI = async (name) => {
             name: dog.name,
             height: dog.height?.metric,
             weight: dog.weight?.metric,
-            life_span: dog.life_span
+            life_span: dog.life_span,
+            temperament: dog.temperament
         }
     });
-    return infoApi;
+
+    // filtramos por nombre
+    const allDogs = infoApiFilter.filter((dog) =>
+        dog.name.toLowerCase().startsWith(name.toLowerCase())
+    );
+
+
+    return allDogs;
 }
 
 

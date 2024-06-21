@@ -10,11 +10,14 @@ const getDogsByNameControllerDB = require('../../controllers/dogs/getDogsByNameC
 // handler getDogsHandler
 const getDogsHandler = async (req, res) => {
     const { name } = req.query;
-    console.log(name)
     try {
         if (name) {
             const dogsByNameAPI = await getDogsByNameControllerAPI(name);
             const dogsByNameDB = await getDogsByNameControllerDB(name);
+            // Si no encuenta nungun perrito devuelve el mensaje de error
+            if (dogsByNameAPI.length === 0 && dogsByNameDB.length === 0) {
+                throw new Error(`No se encontro ninguna raza con nombre: ${name}`)
+            }
             const dogByName = [...dogsByNameDB, ...dogsByNameAPI]
             res.status(200).json(dogByName);
         } else {

@@ -10,7 +10,8 @@ const getDogByApiController = async (id) => {
             name: dog.name,
             height: dog.height?.metric,
             weight: dog.weight?.metric,
-            life_span: dog.life_span
+            life_span: dog.life_span,
+            temperament: dog.temperament
         }
     });
 

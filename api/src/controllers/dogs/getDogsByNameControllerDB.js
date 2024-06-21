@@ -1,7 +1,7 @@
 const { Dog, Temperament } = require('../../db');
 
-const getDogsByNameControllerDB = async () => {
-    const allDogsBD = await Dog.findAll(
+const getDogsByNameControllerDB = async (name) => {
+    const allDogsDB = await Dog.findAll(
         {
             include: [
                 {
@@ -12,7 +12,11 @@ const getDogsByNameControllerDB = async () => {
             ]
         }
     );
-    return allDogsBD;
+
+    const allDogsDBFilter = allDogsDB.length !== 0 ? allDogsDB.filter((dog) => dog.name.toLowerCase().startsWith(name.toLowerCase())) : [];
+
+
+    return allDogsDBFilter;
 }
 
 
