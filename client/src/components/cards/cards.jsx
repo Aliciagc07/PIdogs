@@ -1,12 +1,15 @@
 import "./cards.css"
 import Card from '../card/card'
 
-function cards() {
+
+function Cards({ allDogs }) {
     return (
         <div>
-            <Card image='imagendeprueba' name='Pitbull' temperaments='Temp1' weight='50' />
+            {allDogs.map((dog, index) => {
+                return <Card key={index} image={dog.image} name={dog.name} temperamets={dog.temperament} weight={dog.weight} />
+            })}
         </div>
     )
 }
 
-export default cards;
+export default Cards;

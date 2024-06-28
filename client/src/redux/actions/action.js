@@ -1,4 +1,5 @@
 import { GET_ALL_DOGS } from "./action-types";
+import axios from "axios";
 
 export function getAllDogs() {
     return async (dispatch) => {

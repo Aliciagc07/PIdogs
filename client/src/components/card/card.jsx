@@ -1,14 +1,14 @@
 import "./card.css"
 
-function card(props) {
+function Card({ key, image, name, temperamets, weight }) {
     return (
         <div>
-            <img src={props.image} alt="" />
-            <h1>{props.name}</h1>
-            <p>{props.temperamets}</p>
-            <h3>{props.weight}</h3>
+            <img src={image} alt="" />
+            <h1>{name}</h1>
+            <p>{temperamets}</p>
+            <h3>{weight}</h3>
         </div>
     )
 }
 
-export default card;
+export default Card;
